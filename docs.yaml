@@ -1,4 +1,24 @@
 Architecture:
-  - Re-made the project using Vite with SWC instead of CRA with Webpack for faster performance on the production-side
-    - Vite is faster than Webpack
-    - SWC is a Rust-based compiler for the web
+  - Re-made the project using Vite with SWC instead of CRA with Webpack for faster performance on the production-side:
+      - Vite is faster than Webpack
+      - SWC is a Rust-based compiler for the web
+  - Moved to DDD architecture (domain-driven)
+  - Components directory has the project's UI kit or components:
+      - Component.tsx is the component code itself (JSX and logic). It's best practice to name components in uppercase
+      - index.tsx is the default import for the component
+      - Component.module.css is the component styles file, its preferable to use SCSS
+      - constants.ts is usually a handler for static strings that you might need or have to re-use in your application to keep the component file itself clean
+      - In the case of a large project it's recommended to have different directories in the components file:
+          - "common": would contain the UI kit components
+          - "feature": components for specific features that would not belong in a specific domain
+          - "icons": if you had icons it's recommended to make them into a TSX component that would be re-used by a higher-order Icons component
+
+NOTES:
+  - CSS of the project was left untouched, only the React and TypeScript code/logic was refactored.
+  - It's good practice to import only what you need from the React module instead of importing the entire module. Improves performacne slightly
+  - Refactored the entire project to use Hooks (functional/modern React) instead of classes:
+      - Better scalability and long-term support
+      - Better code readability and cleaner code overall
+      - Avoid the user of "this" keyword since it causes unpredictable behaviour in JavaScript
+      - Easier to decouple logic from UI, making both more reusable
+      - Better and easier lifecycle of a React component
