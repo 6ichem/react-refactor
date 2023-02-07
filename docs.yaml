@@ -1,0 +1,4 @@
+Architecture:
+  - Re-made the project using Vite with SWC instead of CRA with Webpack for faster performance on the production-side
+    - Vite is faster than Webpack
+    - SWC is a Rust-based compiler for the web
