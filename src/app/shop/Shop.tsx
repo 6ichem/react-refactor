@@ -59,9 +59,11 @@ const Shop: FC = () => {
     setLoading(true);
 
     const updated = [...products];
-    updated.push(payload);
 
-    setProducts(updated.reverse());
+    // Using unshift instead of push in order to add the item at the start of the array
+    updated.unshift(payload);
+
+    setProducts(updated);
     setModalOpen(false);
 
     try {
@@ -76,7 +78,7 @@ const Shop: FC = () => {
   };
 
   return (
-    <>
+    <div data-test="shopContainer">
       <Header />
       <Hero />
 
@@ -113,7 +115,7 @@ const Shop: FC = () => {
           onSubmit={onSubmit}
         />
       </>
-    </>
+    </div>
   );
 };
 
